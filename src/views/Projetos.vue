@@ -43,7 +43,7 @@ export default defineComponent({
     data() {
         return {
             nomeDoProjeto: "",
-            projetos: [] as IProjetos
+            projetos: [] as IProjetos[]
         };
     },
     methods: {
