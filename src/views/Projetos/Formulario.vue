@@ -1,6 +1,5 @@
 <template>
-    <section class="projetos">
-        <h1 class="title">Projetos</h1>
+    <section>
         <form @submit.prevent="salvar">
             <div class="field" id="dataInput">
                 <label for="nomeDoProjeto" class="label"> Nome do Projeto </label>
@@ -60,10 +59,3 @@ export default defineComponent({
 });
 
 </script>
-
-<style scoped>
-#dataInput,
-.table {
-    padding: 1.25rem;
-}
-</style>
