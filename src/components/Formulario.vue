@@ -28,10 +28,11 @@
 <script lang="ts">
 
 import { computed, defineComponent } from 'vue';
+import { TipoNotificacao } from "@/interfaces/INotificacao";
 import TemporizadorForm from './Temporizador.vue';
 import { useStore } from 'vuex';
 import { key } from '@/store';
-import { ADICIONA_TAREFA } from "../store/tipo-mutacoes";
+import { ADICIONA_TAREFA, NOTIFICAR } from "../store/tipo-mutacoes";
 import { store } from '../store/index';
 
 export default defineComponent({
@@ -49,6 +50,17 @@ export default defineComponent({
     },
     methods: {
         FinalizarTarefa(tempoDecorrido: number): void {
+            const projeto = this.projetos.find((p) => p.id == this.idProjeto); // primeiro, buscamos pelo projeto
+
+            if (!projeto) {
+                store.commit(NOTIFICAR, {
+                    titulo: 'Ops!',
+                    texto: "Selecione um projeto antes de finalizar a tarefa!",
+                    tipo: TipoNotificacao.FALHA,
+                });
+                return;
+            }
+
             this.$emit('aoSalvarTarefa', {
                 duracaoEmSegundos: tempoDecorrido,
                 descricao: this.descricao,
