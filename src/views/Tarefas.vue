@@ -9,7 +9,8 @@
 </template>
   
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { useStore } from '../store/index';
+import { computed, defineComponent } from 'vue';
 import FormularioCentral from '../components/Formulario.vue';
 import ListaTarefas from '../components/ListaTarefas.vue';
 import BoxVue from '../components/Box.vue';
@@ -25,7 +26,7 @@ export default defineComponent({
     },
     data() {
         return {
-            tarefas: [] as ITarefas[],
+            // tarefas: [] as ITarefas[],
             modoEscuroAtivo: false
         }
     },
@@ -36,10 +37,17 @@ export default defineComponent({
     },
     methods: {
         salvarTarefas(tarefa: ITarefas) {
-            this.tarefas.push(tarefa);
+            // this.tarefas.push(tarefa);
         },
         trocarTema(modoEscuroAtivo: boolean) {
             this.modoEscuroAtivo = modoEscuroAtivo;
+        }
+    },
+    setup() {
+        const store = useStore()
+        return {
+            tarefas: computed(() => store.state.tarefas),
+            store
         }
     }
 

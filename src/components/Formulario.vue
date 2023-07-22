@@ -31,7 +31,8 @@ import { computed, defineComponent } from 'vue';
 import TemporizadorForm from './Temporizador.vue';
 import { useStore } from 'vuex';
 import { key } from '@/store';
-
+import { ADICIONA_TAREFA } from "../store/tipo-mutacoes";
+import { store } from '../store/index';
 
 export default defineComponent({
     name: 'FormularioCentral',
@@ -52,7 +53,14 @@ export default defineComponent({
                 duracaoEmSegundos: tempoDecorrido,
                 descricao: this.descricao,
                 projeto: this.projetos.find(proj => proj.id == this.idProjeto)
-            })
+            });
+
+            store.commit(ADICIONA_TAREFA, {
+                duracaoEmSegundos: tempoDecorrido,
+                descricao: this.descricao,
+                projeto: this.projetos.find(proj => proj.id == this.idProjeto)
+            });
+
             this.descricao = '';
         }
     },
