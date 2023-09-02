@@ -9,13 +9,12 @@
             <span>play</span>
         </button>
         <button class="button" @click="finalizar" :disabled="!cronometroRodando">
-            <span  cllass="icon">
+            <span cllass="icon">
                 <i class="fas fa-stop"></i>
             </span>
             <span>stop</span>
         </button>
     </div>
-    
 </template>
 
 
@@ -24,14 +23,12 @@
 import { defineComponent } from 'vue';
 import CronometroF from './Cronometro.vue';
 
-
-
 export default defineComponent({
     name: 'TemporizadorForm',
     emits: ['aoTemporizadorFinalizado'],
     components: {
         CronometroF,
-       
+
     },
     data() {
         return {
