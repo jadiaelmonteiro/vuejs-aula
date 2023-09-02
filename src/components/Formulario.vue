@@ -52,14 +52,14 @@ export default defineComponent({
         FinalizarTarefa(tempoDecorrido: number): void {
             const projeto = this.projetos.find((p) => p.id == this.idProjeto); // primeiro, buscamos pelo projeto
 
-            if (!projeto) {
-                store.commit(NOTIFICAR, {
-                    titulo: 'Ops!',
-                    texto: "Selecione um projeto antes de finalizar a tarefa!",
-                    tipo: TipoNotificacao.FALHA,
-                });
-                return;
-            }
+            // if (!projeto) {
+            //     store.commit(NOTIFICAR, {
+            //         titulo: 'Ops!',
+            //         texto: "Selecione um projeto antes de finalizar a tarefa!",
+            //         tipo: TipoNotificacao.FALHA,
+            //     });
+            //     return;
+            // }
 
             this.$emit('aoSalvarTarefa', {
                 duracaoEmSegundos: tempoDecorrido,
