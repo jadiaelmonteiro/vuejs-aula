@@ -22,3 +22,7 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+### Link for visit application
+Visit [See app](https://vuejs-aula-tracker.vercel.app/#/).
